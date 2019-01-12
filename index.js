@@ -1,11 +1,9 @@
 const express = require('express');
 const cookieSession = require('cookie-session');
-const passport = require('passport');
 const mongoose = require('mongoose').set('debug', true);
 const keys = require('./config/keys');
-const Tweet = require('./models/tweetsDAO');
-const Country = require('./models/countryDAO');
-
+const tweets = require('./routes/tweets-route');
+const countries = require('./routes/countries-route');
 bodyParser = require('body-parser');
 
 const app = express();
@@ -19,29 +17,20 @@ app.use(cookieSession({
     keys: [keys.session.cookieKey]
 }));
 
-// initialize passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 mongoose.Promise = global.Promise;
 
 // connect to mongodb
 mongoose.connection.openUri(keys.mongodb.dbURI, () => {
     console.log('connected to mongodb');
-	
+
 });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-app.get('/getAllTweets', (req, res) => {
-    Tweet.getAllTweets().then(data=>res.json(data));
-});
-
-app.get('/getAllCountries', (req, res) => {
-    Country.getAllCountries().then(data=>res.json(data));
-});
-
+app.use('/getAllTweets', tweets);
+app.use('/getAllCountries', countries);
 
 
 app.listen(process.env.PORT || 3000, () => {

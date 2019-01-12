@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let tweetService = new (require('../services/tweetsService')).TweetService();
+let countryService = new (require('../services/countryService')).CountryService();
 
 router.use(function(req, res, next) {
     // Website you wish to allow to connect
@@ -23,8 +23,8 @@ router.use(function(req, res, next) {
 
 router.get('/', async function(req, res, next) {
     try {
-        let tweetsUpdatedWithSentiment = await tweetService.getTweets();
-        res.send(tweetsUpdatedWithSentiment);
+        let countriesList = await countryService.getCountries();
+        res.send(countriesList);
     } catch (err) {
         console.log(err);
         next(err);

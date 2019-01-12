@@ -11,3 +11,4 @@ exports.findTweetAndUpdateSentiment = async function(tweetId, sentiment){
          if (err) console.log(err);
      })
 };
+
