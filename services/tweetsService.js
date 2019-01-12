@@ -9,7 +9,7 @@ exports.TweetService = class {
     }
 
 
-    async ApiGetSetiment(tweetId, token, text) {
+    async ApiGetSentiment(tweetId, token, text) {
         try {
             let tweet = await axios.get(`https://api.dandelion.eu/datatxt/sent/v1?token=${token}&text=${text}`);
             let updatedTweet = await tweetsRepository.findTweetAndUpdateSentiment(tweetId, tweet.data.sentiment.type);
@@ -24,7 +24,7 @@ exports.TweetService = class {
         let allTweetsList = await tweetsRepository.getAllTweets();
        /* let res = _.map(allTweetsList, tweet => {
             if (_.has(tweet, '_doc.sentiment') === false) {
-                return this.ApiGetSetiment(tweet._id, token, tweet.text);
+                return this.ApiGetSentiment(tweet._id, token, tweet.text);
             }
         });*/
         return allTweetsList;
