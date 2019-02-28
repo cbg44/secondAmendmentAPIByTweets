@@ -1,6 +1,6 @@
 let express = require('express');
 let router = express.Router();
-let generalService = new (require('../services/topGeneralService')).GeneralService();
+let generalService = new (require('../services/view3Service')).View3();
 
 router.use(function(req, res, next) {
     // Website you wish to allow to connect
@@ -23,8 +23,8 @@ router.use(function(req, res, next) {
 
 router.get('/', async function(req, res, next) {
     try {
-        let countries_format_names_ = await generalService.getCountries_format_names_();
-        res.send(countries_format_names_);
+        let view3 = await generalService.view3_service();
+        res.send(view3);
     } catch (err) {
         console.log(err);
         next(err);

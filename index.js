@@ -6,7 +6,8 @@ const tweets = require('./routes/tweets-route');
 const countries = require('./routes/countries-route');
 const positive_ = require('./routes/positive-tweets-route');
 const negative_ = require('./routes/negative-tweets-route');
-const countries_format_names = require('./routes/countries_format_names-route');
+const view2 = require('./routes/view2-route');
+const view3 = require('./routes/view3-route');
 bodyParser = require('body-parser');
 
 const app = express();
@@ -36,7 +37,8 @@ app.use('/getAllTweets', tweets);
 app.use('/getAllCountries', countries);
 app.use('/getTopNegative', negative_);
 app.use('/getTopPositive', positive_);
-app.use('/getCountries_format_names', countries_format_names);
+app.use('/view2', view2);
+app.use('/view3', view3);
 
 
 app.listen(process.env.PORT || 3000, () => {
