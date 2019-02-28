@@ -1,7 +1,7 @@
 let tweetsRepository = require('../repositories/tweets-repository');
 let _ = require('lodash');
 const axios = require('axios');
-const token = 'f5a6cd55f70f4fc1b49b4a52ea527d67';
+const token = '9d0c107a7ed94754b50de0e230032f27';
 
 exports.TweetService = class {
 
@@ -22,11 +22,11 @@ exports.TweetService = class {
 
     async getTweets() {
         let allTweetsList = await tweetsRepository.getAllTweets();
-       /* let res = _.map(allTweetsList, tweet => {
+        let res = _.map(allTweetsList, tweet => {
             if (_.has(tweet, '_doc.sentiment') === false) {
                 return this.ApiGetSentiment(tweet._id, token, tweet.text);
             }
-        });*/
+        });
         return allTweetsList;
     }
 

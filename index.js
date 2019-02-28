@@ -4,6 +4,9 @@ const mongoose = require('mongoose').set('debug', true);
 const keys = require('./config/keys');
 const tweets = require('./routes/tweets-route');
 const countries = require('./routes/countries-route');
+const positive_ = require('./routes/positive-tweets-route');
+const negative_ = require('./routes/negative-tweets-route');
+const countries_format_names = require('./routes/countries_format_names-route');
 bodyParser = require('body-parser');
 
 const app = express();
@@ -31,6 +34,9 @@ app.use(bodyParser.json());
 
 app.use('/getAllTweets', tweets);
 app.use('/getAllCountries', countries);
+app.use('/getTopNegative', negative_);
+app.use('/getTopPositive', positive_);
+app.use('/getCountries_format_names', countries_format_names);
 
 
 app.listen(process.env.PORT || 3000, () => {
