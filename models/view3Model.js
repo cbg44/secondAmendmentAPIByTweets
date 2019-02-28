@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const view3Schema = new Schema({
+const view_three_Schema = new Schema({
     country:String,
     positive:String,
     neutral:String,
@@ -10,6 +10,6 @@ const view3Schema = new Schema({
 
 
 
-const view3Schema_ = mongoose.model('view3', view3Schema);
+const View_three = mongoose.model('View_three', view_three_Schema);
 
-module.exports = view3Schema_;
+module.exports = View_three;

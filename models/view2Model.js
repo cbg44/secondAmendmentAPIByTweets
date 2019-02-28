@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const view2Schema = new Schema({
+const view_two_schema = new Schema({
     total_republicans:String,
     total_democrats:String,
     negative_democrates:String,
@@ -10,6 +10,6 @@ const view2Schema = new Schema({
 
 
 
-const view2Schema_ = mongoose.model('view2', view2Schema);
+const View_two = mongoose.model('View_two', view_two_schema);
 
-module.exports = view2Schema_;
+module.exports = View_two;
